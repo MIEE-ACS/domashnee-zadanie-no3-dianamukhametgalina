@@ -27,15 +27,27 @@ namespace Homework3
 
         private void btnReverse_Click(object sender, RoutedEventArgs e)
         {
+            int y = 0;
             var st = tbText.Text;
-            var split = st.Split();
+            int[] ind = new int[st.Length];
+            char[] sign = new char[st.Length];
+            for (int i = 0; i < st.Length; i++)
+            {
+                if (st[i] == '!' || st[i] == '.' || st[i] == ',' || st[i] == '?' || st[i] == ':' || st[i] == ';')
+                {
+                    ind[y] = i;
+                    sign[y] = st[i];
+                    y++;
+                }
+            }
+            var split = st.Split(' ', '!', '?', '.', ',');
             var s = "";
             foreach (var item in split)
             {
                 s += Reverse(item.ToList()) + " ";
             }
+            s = Reverse1(s.ToList(), ind, sign);
             tbResult.Text = s.ToString();
-
         }
         private static string Reverse(List<char> word)
         {
@@ -61,5 +73,21 @@ namespace Homework3
             }
             return string.Join("", word);
         }
+        private static string Reverse1(List<char> s, int[] ind, char[] sign)
+        {
+            int y = 0;
+            for (int i = 0; i < s.Count; i++)
+            {
+                if (i == ind[y])
+                {
+                    s[i] = sign[y];
+                    y++;
+                }
+            }
+            string.Join("", s);
+            return string.Join("", s);
+        }
     }
+
+    
 }
