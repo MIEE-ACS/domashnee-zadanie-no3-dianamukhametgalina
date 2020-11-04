@@ -6,7 +6,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
 
-namespace HomeWork3
+namespace Homework3
 {
     /// <summary>
     /// Interaction logic for App.xaml
